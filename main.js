@@ -1,45 +1,51 @@
-var app = angular.module('melo', []);
 
-app.controller('MainController', function ($scope, $http) {
-  //$scope.names = "";
+$(document).ready(function () {
   var titleObject = new Object();
-  $scope.title = [];
 
-  setInterval(function(){
-    //location.reload();
-  }, 2000)
 
-  loadJSON("title", function(json) {
-    titleObject = json;
-    $scope.title = Object.getOwnPropertyNames(titleObject);
-    console.log($scope.title);
+  loadJSON("title", function (json) {
+    titleObject = JSON.parse(json);
+    var fileName = Object.getOwnPropertyNames(titleObject);
+    console.log(fileName);
+    for (var i=0;i<fileName.length;i++){
+      $('<option/>').val(titleObject[fileName[i]]).text(fileName[i]).appendTo('.selectFile');
+    }
   });
 
-  $scope.fillPayload = function fillPayload(item) {
-    console.log($scope.selectedName);
-    loadJSON(titleObject[item], function(json){  
-      var str = JSON.stringify(json, undefined, 4);
-      output(syntaxHighlight(str));
+  $('.submitFile').on('click', function() {
+    console.log('Select Value is ' + $('.selectFile').val());
+    loadJSON($('.selectFile').val(), function (json) {
+      console.log('JSON load')
+      // var str = JSON.stringify(json, undefined, 4);
+      document.getElementById("prettyJson").setAttribute("style", "visibility: visible;");
+      $('.prettyJson').jsonView(json);    
+      
+
+      //output(syntaxHighlight(str));
     })
-  }
+  })
 
 
-  function loadJSON(file, callback) {   
+
+
+
+  function loadJSON(file, callback) {
     var xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
-    xobj.open('GET', file + '.json', true);
+    xobj.open('GET', 'Useless/' + file + '.json', true);
     xobj.onreadystatechange = function () {
       if (xobj.readyState == 4 && xobj.status == "200") {
-        callback(JSON.parse(xobj.responseText));
+        callback(xobj.responseText);
       }
     };
-    xobj.send(null);  
+    xobj.send(null);
   }
-  
+
   function output(json) {
-    var jsonArea = document.getElementById("prettyJson");
-    jsonArea.innerHTML = json;
-    jsonArea.setAttribute("style", "visibility: visible;");
+    
+    // var jsonArea = document.getElementById("prettyJson");
+    // jsonArea.innerHTML = json;
+    document.getElementById("prettyJson").setAttribute("style", "visibility: visible;");
   }
   
   function syntaxHighlight(json) {
@@ -60,11 +66,4 @@ app.controller('MainController', function ($scope, $http) {
         return '<span class="' + cls + '">' + match + '</span>';
     });
   }
-
 });
-
-
-
-
-
-

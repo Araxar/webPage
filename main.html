@@ -4,16 +4,18 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="main.css">
-    
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script> -->
-    <script src="angular.min.js"></script>
+
+    <script src="jquery-3.2.1.min.js"></script>
     <script src="main.js"></script>
+    <script src="jquery.json-view.js"></script>
+
 </head>
 
-<body ng-app="melo" ng-controller="MainController">
+<body >
     
     <div class="split left">
-        <select ng-model="selectedName" ng-options="item as item for item in title" ng-change="fillPayload(selectedName)"></select>
+        <select class=selectFile></select>
+        <input type="button" class="submitFile" value="Select"/>
         <pre id="prettyJson" class="prettyJson"></pre>
 
         <!-- <textarea rows="50" cols="50"></textarea> -->
