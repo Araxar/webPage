@@ -4,25 +4,29 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="main.css">
+    <link href="jquery.jsonview.min.css" rel="stylesheet">
 
     <script src="jquery-3.2.1.min.js"></script>
     <script src="main.js"></script>
-    <script src="jquery.json-view.js"></script>
+    <script src="jquery.jsonview.min.js"></script>
 
 </head>
 
-<body >
-    
+<body>
+
     <div class="split left">
         <select class=selectFile></select>
-        <input type="button" class="submitFile" value="Select"/>
-        <pre id="prettyJson" class="prettyJson"></pre>
-
-        <!-- <textarea rows="50" cols="50"></textarea> -->
+        <input type="button" class="submitFile" value="Select" />
+        <div id="requestBody" class="jsonContainer">
+            <div id="bodyJson" class="bodyJson"></div>
+            <input type="button" class="callApi" value="Send" />
+        </div>
     </div>
 
     <div class="split right">
-        <!-- <textarea rows="50" cols="50"></textarea> -->
+        <div id="responseBody" class="jsonContainer">
+            <div class="resultJson"></div>
+        </div>
     </div>
 </body>
 

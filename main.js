@@ -1,69 +1,64 @@
-
-$(document).ready(function () {
-  var titleObject = new Object();
-
-
-  loadJSON("title", function (json) {
-    titleObject = JSON.parse(json);
-    var fileName = Object.getOwnPropertyNames(titleObject);
-    console.log(fileName);
-    for (var i=0;i<fileName.length;i++){
-      $('<option/>').val(titleObject[fileName[i]]).text(fileName[i]).appendTo('.selectFile');
-    }
-  });
-
-  $('.submitFile').on('click', function() {
-    console.log('Select Value is ' + $('.selectFile').val());
-    loadJSON($('.selectFile').val(), function (json) {
-      console.log('JSON load')
-      // var str = JSON.stringify(json, undefined, 4);
-      document.getElementById("prettyJson").setAttribute("style", "visibility: visible;");
-      $('.prettyJson').jsonView(json);    
-      
-
-      //output(syntaxHighlight(str));
-    })
-  })
+$(document).ready(function() {
+    var titleObject = new Object();
+    var bodyJson = "";
 
 
+    loadJSON("title", function(json) {
 
+        titleObject = JSON.parse(json);
+        var fileName = Object.getOwnPropertyNames(titleObject);
 
-
-  function loadJSON(file, callback) {
-    var xobj = new XMLHttpRequest();
-    xobj.overrideMimeType("application/json");
-    xobj.open('GET', 'Useless/' + file + '.json', true);
-    xobj.onreadystatechange = function () {
-      if (xobj.readyState == 4 && xobj.status == "200") {
-        callback(xobj.responseText);
-      }
-    };
-    xobj.send(null);
-  }
-
-  function output(json) {
-    
-    // var jsonArea = document.getElementById("prettyJson");
-    // jsonArea.innerHTML = json;
-    document.getElementById("prettyJson").setAttribute("style", "visibility: visible;");
-  }
-  
-  function syntaxHighlight(json) {
-    json = json.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    return json.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
-        var cls = 'number';
-        if (/^"/.test(match)) {
-            if (/:$/.test(match)) {
-                cls = 'key';
-            } else {
-                cls = 'string';
-            }
-        } else if (/true|false/.test(match)) {
-            cls = 'boolean';
-        } else if (/null/.test(match)) {
-            cls = 'null';
+        for (var i = 0; i < fileName.length; i++) {
+            $('<option/>').val(titleObject[fileName[i]]).text(fileName[i]).appendTo('.selectFile');
         }
-        return '<span class="' + cls + '">' + match + '</span>';
+
     });
-  }
+
+    $('.submitFile').on('click', function() {
+
+        loadJSON($('.selectFile').val(), function(json) {
+
+            document.getElementById("requestBody").setAttribute("style", "visibility: visible;");
+            $('.bodyJson').JSONView(json);
+            bodyJson = json;
+
+        });
+
+    });
+
+    $('.callApi').on('click', function() {
+
+        // $.post("http://localhost:3000/processor", bodyJson, function(result, status) {
+        //     if (status === "success") {
+        //         $('.resultJson').JSONView(response.data);
+        //     }
+        // }, "json");
+
+        $.ajax({
+            method: "POST",
+            url: "http://localhost:3000/processor",
+            data: { bodyJson },
+            contentType: "application/json;",
+            dataType: "json"
+        }).done(function(response) {
+            $('.resultJson').JSONView(response.data);
+            document.getElementById("responseBody").setAttribute("style", "visibility: visible;");
+        });
+
+    });
+
+
+    function loadJSON(file, callback) {
+        var xobj = new XMLHttpRequest();
+        xobj.overrideMimeType("application/json");
+        xobj.open('GET', 'RequestBody/' + file + '.json', true);
+        xobj.onreadystatechange = function() {
+            if (xobj.readyState == 4 && xobj.status == "200") {
+                callback(xobj.responseText);
+            }
+        };
+        xobj.send(null);
+    }
+
+
 });

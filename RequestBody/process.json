@@ -1,0 +1,24 @@
+{
+	"reference": "T01-97-RIAZ",
+	"ruleSetIds": ["Checkout.com","100560"],
+	"ruleCategory": "Pre",
+    "entities": [
+        {
+            "entityType": "Account",
+            "entityId": "100560"
+        },
+        {
+            "entityType": "Business",
+            "entityId": "200560"
+        },
+        {
+            "entityType": "Channel",
+            "entityId": "300560"
+        }
+    ],
+	"data": {
+		"customerEmail": "john@gmail.com",
+		"value": 20500,
+		"cardNumber": "4242424242424242"
+	}
+}
