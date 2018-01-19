@@ -2,6 +2,10 @@
 <html>
 
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script> -->
     <script src="angular.min.js"></script>
     <script src="main.js"></script>
 </head>
@@ -9,13 +13,14 @@
 <body ng-app="melo" ng-controller="MainController">
     
     <div class="split left">
-        <select ng-model="selectedName" ng-options="x for x in title"></select>
+        <select ng-model="selectedName" ng-options="item as item for item in title" ng-change="fillPayload(selectedName)"></select>
+        <pre id="prettyJson" class="prettyJson"></pre>
 
-        <textarea rows="50" cols="50"></textarea>
+        <!-- <textarea rows="50" cols="50"></textarea> -->
     </div>
 
     <div class="split right">
-        <textarea rows="50" cols="50"></textarea>
+        <!-- <textarea rows="50" cols="50"></textarea> -->
     </div>
 </body>
 
