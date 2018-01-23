@@ -64,8 +64,7 @@ body {
 
 /* Control the left side */
 
-.searchDiv,
-.callApi {
+.searchDiv {
     margin: 0 auto;
     text-align: center;
 }
@@ -177,4 +176,50 @@ body {
 .ruleContainer {
     margin-left: 40px;
     width: auto;
+}
+
+.blue {
+    background-color: rgb(2, 155, 202) !important;
+}
+
+.green {
+    background-color: rgb(2, 202, 2) !important;
+}
+
+.yellow {
+    background-color: rgb(214, 214, 8) !important;
+}
+
+
+/* css button */
+
+.soflow {
+    -webkit-appearance: button;
+    -webkit-border-radius: 2px;
+    -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    -webkit-padding-end: 20px;
+    -webkit-padding-start: 2px;
+    -webkit-user-select: none;
+    background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+    background-position: 95% center;
+    background-repeat: no-repeat;
+    border: 1px solid #AAA;
+    color: #555;
+    font-size: inherit;
+    margin: 20px;
+    overflow: hidden;
+    padding: 5px 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-right: 50px;
+    border-radius: 5px;
+}
+
+.callApi {
+    visibility: hidden;
+    position: relative;
+    width: 100px;
+    height: 30px;
+    left: calc(50% - 50px);
+    margin: 0 auto;
 }

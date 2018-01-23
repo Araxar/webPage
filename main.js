@@ -1,7 +1,7 @@
 $(document).ready(function() {
     var titleObject = new Object();
     var bodyJson = "";
-
+    var colorTag = 1;
 
     loadJSON("title", function(json) {
 
@@ -23,6 +23,8 @@ $(document).ready(function() {
 
         });
 
+        $(".callApi").css("visibility", "visible");
+
     });
 
     $('.callApi').on('click', function() {
@@ -40,8 +42,6 @@ $(document).ready(function() {
             $('.processId').find("p").text(response.processorId)
             $('.date').find("p").text(response.createdAt);
             $('.reference').find("p").text(response.reference);
-
-            console.log(response);
 
             response.ruleSets.forEach(ruleset => {
 
@@ -121,9 +121,30 @@ $(document).ready(function() {
                 ruleDiv.append(document.createElement("hr"));
                 $(".ruleSets").append(ruleDiv);
 
-
                 $(".tagsInput").tagsinput("refresh");
             });
+            $('.tag').each(function() {
+
+                var currentElement = $(this);
+                switch (colorTag) {
+                    case 1:
+                        currentElement[0].className = "tag label label-info blue";
+                        colorTag++;
+                        break;
+                    case 2:
+                        currentElement[0].className = "tag label label-info green";
+                        colorTag++;
+                        break;
+                    case 3:
+                        currentElement[0].className = "tag label label-info yellow";
+                        colorTag = 1;
+                        break;
+                    default:
+                        console.log("Broken Tag");
+                }
+
+            });
+
         });
 
         function createRuleProperty(title, value) {
@@ -154,6 +175,10 @@ $(document).ready(function() {
             }
         };
         xobj.send(null);
+    }
+
+    function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
 
