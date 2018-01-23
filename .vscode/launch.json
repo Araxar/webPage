@@ -5,11 +5,23 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch main.html",
-            "type": "firefox",
+            "type": "chrome",
             "request": "launch",
-            "reAttach": true,
-            "file": "${workspaceFolder}/main.html"
+            "name": "Launch Chrome",
+            "url": "http://localhost/demo/main.html"
         }
+        // {
+        //     "type": "chrome",
+        //     "request": "launch",
+        //     "name": "Launch Chrome",
+        //     "webRoot": "${workspaceFolder}/main.html"
+        // }
+        // {
+        //     "name": "Launch main.html",
+        //     "type": "firefox",
+        //     "request": "launch",
+        //     "reAttach": true,
+        //     "file": "${workspaceFolder}/main.html"
+        // }
     ]
 }

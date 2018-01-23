@@ -5,27 +5,48 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="main.css">
     <link href="jquery.jsonview.min.css" rel="stylesheet">
+    <link href="bootstrap-tagsinput.css" rel="stylesheet">
 
     <script src="jquery-3.2.1.min.js"></script>
     <script src="main.js"></script>
+
     <script src="jquery.jsonview.min.js"></script>
+    <script src="bootstrap-tagsinput.js"></script>
 
 </head>
 
-<body>
+<body class="body">
 
-    <div class="split left">
-        <select class=selectFile></select>
-        <input type="button" class="submitFile" value="Select" />
-        <div id="requestBody" class="jsonContainer">
-            <div id="bodyJson" class="bodyJson"></div>
-            <input type="button" class="callApi" value="Send" />
+    <div class="splitLeft">
+        <div class="searchDiv">
+            <select class=selectFile></select>
+            <input type="button" class="submitFile" value="Select" />
         </div>
+        <div class="bodyJson"></div>
+        <input type="button" class="callApi" value="Send" />
     </div>
 
-    <div class="split right">
-        <div id="responseBody" class="jsonContainer">
-            <div class="resultJson"></div>
+    <hr class="vLine">
+
+    <div class="splitRight">
+        <div class="topContainer">
+            <div class="processId splitTopContainer">
+                <h5 class="topTitle">Processor ID :</h5>
+                <p class="topValue"></p>
+            </div>
+            <div class="date splitTopContainer">
+                <h5 class="topTitle">Created At :</h5>
+                <p class="topValue"></p>
+            </div>
+            <div class="reference splitTopContainer">
+                <h5 class="topTitle">Reference :</h5>
+                <p class="topValue"></p>
+            </div>
+            <hr class="hLine">
+        </div>
+
+        <div class="ruleSets">
+
         </div>
     </div>
 </body>
