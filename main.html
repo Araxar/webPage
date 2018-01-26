@@ -4,23 +4,52 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <link rel="stylesheet" type="text/css" href="main.css">
-    
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script> -->
-    <script src="angular.min.js"></script>
+    <link href="jquery.jsonview.min.css" rel="stylesheet">
+    <link href="bootstrap-tagsinput.css" rel="stylesheet">
+
+    <script src="jquery-3.2.1.min.js"></script>
     <script src="main.js"></script>
+
+    <script src="jquery.jsonview.min.js"></script>
+    <script src="bootstrap-tagsinput.js"></script>
+
 </head>
 
-<body ng-app="melo" ng-controller="MainController">
-    
-    <div class="split left">
-        <select ng-model="selectedName" ng-options="item as item for item in title" ng-change="fillPayload(selectedName)"></select>
-        <pre id="prettyJson" class="prettyJson"></pre>
+<body class="body">
 
-        <!-- <textarea rows="50" cols="50"></textarea> -->
+    <div class="splitLeft">
+        <div class="searchDiv">
+            <select class="selectFile soflow"></select>
+            <input type="button" class="submitFile" value="Select" />
+        </div>
+        <div class="bodyJson"></div>
+        <div class="searchdiv">
+            <input type="button" class="callApi" value="Send" />
+        </div>
     </div>
 
-    <div class="split right">
-        <!-- <textarea rows="50" cols="50"></textarea> -->
+    <hr class="vLine">
+
+    <div class="splitRight">
+        <div class="topContainer">
+            <div class="processId splitTopContainer">
+                <h5 class="topTitle">Processor ID :</h5>
+                <p class="topValue"></p>
+            </div>
+            <div class="date splitTopContainer">
+                <h5 class="topTitle">Created At :</h5>
+                <p class="topValue"></p>
+            </div>
+            <div class="reference splitTopContainer">
+                <h5 class="topTitle">Reference :</h5>
+                <p class="topValue"></p>
+            </div>
+            <hr class="hLine">
+        </div>
+
+        <div class="ruleSets">
+
+        </div>
     </div>
 </body>
 

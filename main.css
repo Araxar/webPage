@@ -1,34 +1,225 @@
-/* Pretty Print */
-pre {outline: 1px solid #ccc; padding: 5px; margin: 5px; }
-.string { color: green; }
-.number { color: darkorange; }
-.boolean { color: blue; }
-.null { color: magenta; }
-.key { color: red; }
-
 /* Split the screen in half */
-.split {
+
+* {
+    font-family: 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 13px;
+}
+
+h5 {
+    font-size: 15px;
+    margin: 2px;
+}
+
+.ruleSets h5 {
+    margin-bottom: 30px;
+}
+
+p {
+    display: block;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+
+html,
+body {
+    width: 100%;
+    height: 99%;
+    margin: 0;
+    padding: 0;
+}
+
+.splitLeft {
     height: 100%;
-    width: 50%;
+    width: 35%;
     position: fixed;
     z-index: 1;
     top: 0;
     overflow-x: hidden;
     padding-top: 20px;
-  }
-  
-  /* Control the left side */
-  .left {
-    left: 0;
-  }
+    left: 0px;
+}
 
-  .prettyJson{
+.splitRight {
+    height: 100%;
+    width: 65%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+    right: 0px;
+}
+
+.vLine {
+    position: fixed;
+    margin: 0;
+    left: 35%;
+    width: 0.1px;
+    border-width: 0.5px;
+    height: 100%;
+}
+
+
+/* Control the left side */
+
+.searchDiv {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.bodyJson {
+    outline: 1px solid #ccc;
+    height: 70%;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    overflow: auto;
+}
+
+
+/* Control the right side */
+
+.hLine {
+    position: absolute;
+    margin: 0;
+    bottom: 0px;
+    width: 100%;
+}
+
+.topContainer {
+    display: inline-block;
+    position: relative;
+    top: 0px;
+    width: 100%;
+}
+
+.splitTopContainer {
+    display: inline-block;
+    top: 0px;
+    width: 32%;
+    min-width: 100px;
+    float: left;
+    margin-bottom: 10px;
+}
+
+.topTitle {
+    position: relative;
+    top: 0px;
+    margin: 0;
+    text-align: center
+}
+
+.topValue {
+    bottom: 0;
+    margin: 0;
+    margin-top: 10px;
+    position: relative;
+    text-align: center;
+}
+
+.ruleSets {
+    position: relative;
+    top: 10px;
+    overflow-x: hidden;
+    max-height: 80%;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 0px;
+    width: 97%;
+    display: inline-block;
+}
+
+.rule {
+    position: relative;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 90%;
+    display: inline-block;
+    overflow: auto;
+    margin-bottom: 20px;
+}
+
+.propContainer {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.prop {
+    display: inline-block;
+    position: relative;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.val {
+    display: inline-block;
+    position: relative;
+}
+
+.ruleLineSplit {
+    width: 50%;
+}
+
+.deferredProp {
+    text-align: right;
+}
+
+.matchContainer {
+    margin-left: 20px;
+    width: calc(100% - 20px);
+}
+
+.ruleContainer {
+    margin-left: 40px;
+    width: auto;
+}
+
+.blue {
+    background-color: rgb(2, 155, 202) !important;
+}
+
+.green {
+    background-color: rgb(2, 202, 2) !important;
+}
+
+.yellow {
+    background-color: rgb(214, 214, 8) !important;
+}
+
+
+/* css button */
+
+.soflow {
+    -webkit-appearance: button;
+    -webkit-border-radius: 2px;
+    -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    -webkit-padding-end: 20px;
+    -webkit-padding-start: 2px;
+    -webkit-user-select: none;
+    background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+    background-position: 95% center;
+    background-repeat: no-repeat;
+    border: 1px solid #AAA;
+    color: #555;
+    font-size: inherit;
+    margin: 20px;
+    overflow: hidden;
+    padding: 5px 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-right: 50px;
+    border-radius: 5px;
+}
+
+.callApi {
     visibility: hidden;
-    max-height: 200px;
-  }
-  
-  /* Control the right side */
-  .right {
-    right: 0;
-  }
-  
+    position: relative;
+    width: 100px;
+    height: 30px;
+    left: calc(50% - 50px);
+    margin: 0 auto;
+}
